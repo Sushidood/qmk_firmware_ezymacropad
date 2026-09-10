@@ -4,7 +4,18 @@
 
 ![Keychron Keyboards](https://raw.githubusercontent.com/Keychron/Keychron-Keyboards-Hardware-Design/main/docs/assets/hero-keychron-hardware-design.jpg)
 
-Official QMK firmware for Keychron and Lemokey keyboards. This repository contains the firmware source, build configurations, and keymaps for 63+ boards across the Q, Q HE, Q Max, K HE, K Max, K Pro, V, V Max, C Pro, S, X, and Lemokey series.
+Fork of the Official QMK firmware for Keychron and Lemokey keyboards, with an added profile for a rp2040 hall effect board. This repository contains the firmware source, build configurations, and keymaps for 63+ boards across the Q, Q HE, Q Max, K HE, K Max, K Pro, V, V Max, C Pro, S, X, and Lemokey series.
+
+### NOTE:
+
+You may simply install the ezymacropad keyboard profile and compile it if you already have the keychron qmk fork installed.
+
+### TODO:
+
+a better keymap
+support for keychron launcher for super easy adjustable actuation
+SOCD/rapid trigger implementation
+DMA?????
 
 ## Why Open Source?
 
@@ -93,5 +104,3 @@ Contributions are welcome — whether it's a new keymap, a bug fix, or documenta
 ## License
 
 This project is licensed under the [GNU General Public License v2.0](LICENSE).
-
-This repository tracks the [upstream QMK firmware](https://github.com/qmk/qmk_firmware) with Keychron-specific board definitions and firmware additions.
