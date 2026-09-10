@@ -12,10 +12,10 @@ You may simply install the ezymacropad keyboard profile and compile it if you al
 
 ### TODO:
 
-a better keymap
-support for keychron launcher for super easy adjustable actuation
-SOCD/rapid trigger implementation
-DMA?????
+- a better keymap
+- support for keychron launcher for super easy adjustable actuation
+- SOCD/rapid trigger implementation
+- use DMA
 
 ## Why Open Source?
 
