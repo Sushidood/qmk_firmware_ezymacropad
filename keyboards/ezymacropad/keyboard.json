@@ -6,8 +6,8 @@
     "processor": "RP2040",
     "bootloader": "rp2040",
     "usb": {
-        "vid": "0xEZYS",
-        "pid": "0xEZYS",
+        "vid": "0xFEED",
+        "pid": "0xE201",
         "device_version": "1.0.0"
     },
     "features": {

@@ -26,7 +26,7 @@ other peripherals fitted.
 ## Hardware note
 
 This is a custom matrix design rather than a direct GPIO-per-switch layout. The
-multiplexer selects which Hall sensor is sampled, and GP31 reads the selected
+multiplexer selects which Hall sensor is sampled, and GP26 reads the selected
 state back. The matrix scanner must therefore be implemented in a custom QMK
 matrix driver, not by a simple direct-pin matrix.
 
