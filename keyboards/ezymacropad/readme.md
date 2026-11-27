@@ -30,6 +30,34 @@ multiplexer selects which Hall sensor is sampled, and GP26 reads the selected
 state back. The matrix scanner must therefore be implemented in a custom QMK
 matrix driver, not by a simple direct-pin matrix.
 
+## MIDI mode
+
+The board also shows up as a class-compliant USB MIDI device, next to the
+normal keyboard. No driver is needed, so Ableton Live, FL Studio, Logic,
+Reaper, Bitwig, GarageBand and friends pick it up as a MIDI input (named
+"Ezymacropad") as soon as it is plugged in.
+
+In the default keymap, hold the bottom-left key (MO(1)) and tap the second key
+of the top row to switch to the MIDI layer. The bottom-left key (TO(0)) goes
+back to the normal layer.
+
+```
+G#   A    A#   B
+E    F    F#   G
+C    C#   D    D#
+back oct- oct+ vel
+```
+
+Notes start at C3 (MIDI note 48). `vel` (EZ_VTOG) switches between velocity
+from key speed and a fixed velocity (127 unless changed with MI_VELU/MI_VELD).
+
+Velocity comes from how fast each key travels from rest to actuation, timed by
+the Hall sensors. If it feels too soft or too loud, tune
+`EZY_MIDI_VELOCITY_FAST_US` and `EZY_MIDI_VELOCITY_SLOW_US` in `config.h`.
+Uncommenting `EZY_MIDI_VELOCITY_DEBUG` and building with
+`-e CONSOLE_ENABLE=yes` prints each key press's travel time and velocity to
+`qmk console`. Set `MIDI_ENABLE = no` in `rules.mk` to remove MIDI completely.
+
 ## Build target
 
 Once the custom matrix source is implemented for the mux, the board can be built

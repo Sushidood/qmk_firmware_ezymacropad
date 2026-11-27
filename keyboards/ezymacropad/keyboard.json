@@ -44,6 +44,9 @@
             ]
         }
     },
+    "keycodes": [
+        {"key": "EZ_MIDI_VELOCITY_TOGGLE", "label": "Toggle MIDI velocity sensing", "aliases": ["EZ_VTOG"]}
+    ],
     "build": {
         "firmware_format": "uf2"
     }
