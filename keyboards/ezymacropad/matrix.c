@@ -41,6 +41,10 @@ static const uint8_t keymap_remap[MATRIX_ROWS][MATRIX_COLS] = {
 static uint8_t      address_row[HE_KEY_COUNT];
 static matrix_row_t address_col_bit[HE_KEY_COUNT];
 static uint16_t     address_used_mask;
+#ifdef HE_TRAVEL_TIMING
+/* Logical matrix position -> mux address, for per-key travel timing. */
+static uint8_t logical_address[MATRIX_ROWS][MATRIX_COLS];
+#endif
 
 static bool     acq_ok;
 static uint16_t last_pressed;
@@ -60,9 +64,23 @@ static void build_address_map(void) {
             address_row[address]        = logical_index / MATRIX_COLS;
             address_col_bit[address]    = (matrix_row_t)1 << (logical_index % MATRIX_COLS);
             address_used_mask |= 1u << address;
+#ifdef HE_TRAVEL_TIMING
+            logical_address[logical_index / MATRIX_COLS][logical_index % MATRIX_COLS] = address;
+#endif
         }
     }
 }
+
+#ifdef HE_TRAVEL_TIMING
+/* Rest -> actuation time of the last press of the key at this logical matrix
+ * position (what the keymap sees). Used for MIDI velocity in ezymacropad.c. */
+uint32_t ezymacropad_key_travel_us(uint8_t row, uint8_t col) {
+    if (row >= MATRIX_ROWS || col >= MATRIX_COLS) {
+        return 0;
+    }
+    return he_sensor_travel_us(logical_address[row][col]);
+}
+#endif
 
 #if defined(HE_STATS_ENABLE) && defined(CONSOLE_ENABLE)
 static uint32_t stats_timer;

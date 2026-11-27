@@ -28,3 +28,20 @@
 /* Uncomment to output ISR activity / frame toggles for a scope or logic analyzer. */
 // #define HE_DEBUG_ISR_PIN GP6
 // #define HE_DEBUG_FRAME_PIN GP7
+
+/* MIDI mode (MIDI_ENABLE in rules.mk). The board shows up as a class-compliant
+ * USB MIDI device next to the keyboard, so DAWs see it without drivers.
+ * MIDI_ADVANCED gives octave, transpose, velocity and channel keycodes. */
+#define MIDI_ADVANCED
+
+/* Note velocity from how fast a key is struck, measured over the first part of
+ * its travel (from HE_TRAVEL_START_THRESHOLD to MUX_ANALOG_THRESHOLD, see
+ * he_sensor.h). A stroke this fast or faster plays EZY_MIDI_VELOCITY_MAX; this
+ * slow or slower plays EZY_MIDI_VELOCITY_MIN. Tune them to your playing with
+ * EZY_MIDI_VELOCITY_DEBUG, which prints each stroke's time to `qmk console`.
+ * EZ_VTOG switches between sensed and fixed velocity at run time. */
+#define EZY_MIDI_VELOCITY_FAST_US 2000
+#define EZY_MIDI_VELOCITY_SLOW_US 40000
+#define EZY_MIDI_VELOCITY_MAX 127
+#define EZY_MIDI_VELOCITY_MIN 16
+// #define EZY_MIDI_VELOCITY_DEBUG
